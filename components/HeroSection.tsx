@@ -6,6 +6,7 @@ import { CheckCircleIcon, ClockIcon, CurrencyDollarIcon, HomeIcon } from '@heroi
 import { trackEvent } from '@/lib/utils'
 import AddressAutocomplete from './AddressAutocomplete'
 import Image from 'next/image'
+import { sendEmailNotification } from '@/lib/emailjs'
 
 interface FormData {
   address: string
@@ -31,10 +32,37 @@ export default function HeroSection() {
     trackEvent('hero_form_submit', { address: data.address })
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      // Submit to our API
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
 
-      console.log('Form submitted:', data)
+      if (!response.ok) {
+        throw new Error('Failed to submit form')
+      }
+
+      const result = await response.json()
+      console.log('Form submitted successfully:', result)
+
+      // Send email notification from client side
+      try {
+        const timestamp = new Date().toISOString()
+        await sendEmailNotification({
+          address: data.address,
+          phone: data.phone,
+          email: data.email,
+          timestamp
+        })
+        console.log('📧 Email notification sent successfully')
+      } catch (emailError) {
+        console.error('📧 Email notification failed:', emailError)
+        // Don't fail the form submission if email fails
+      }
+
       setIsSubmitted(true)
 
       // Reset form after success
@@ -44,6 +72,7 @@ export default function HeroSection() {
       }, 5000)
     } catch (error) {
       console.error('Form submission error:', error)
+      alert('Something went wrong. Please try again or call us at (512) 635-9847')
     } finally {
       setIsSubmitting(false)
     }
