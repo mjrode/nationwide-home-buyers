@@ -1,7 +1,7 @@
 'use client'
 
 import { StarIcon } from '@heroicons/react/24/solid'
-import { QuoteIcon } from '@heroicons/react/24/outline'
+import { ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
 
 const testimonials = [
   {
@@ -98,7 +98,7 @@ export default function TestimonialsSection() {
             <div key={testimonial.id} className="card p-6 hover:shadow-medium transition-all duration-300 group relative">
               {/* Quote Icon */}
               <div className="absolute top-4 right-4 w-8 h-8 text-primary-200 group-hover:text-primary-300 transition-colors duration-300">
-                <QuoteIcon className="w-full h-full" />
+                <ChatBubbleLeftIcon className="w-full h-full" />
               </div>
 
               {/* Rating */}

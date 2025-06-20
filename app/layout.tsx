@@ -71,7 +71,7 @@ export default function RootLayout({
               name: 'Nationwide Home Buyers',
               description: 'We buy houses in any condition for cash nationwide',
               url: process.env.NEXT_PUBLIC_SITE_URL || 'https://nationwidehomebuyers.com',
-              telephone: '+1-XXX-XXX-XXXX',
+              telephone: '+1-512-635-9847',
               areaServed: 'United States',
               serviceType: 'House Buying Service',
               offers: {

@@ -6,9 +6,9 @@ import {
   PhoneIcon,
   EnvelopeIcon,
   MapPinIcon,
-  FacebookIcon,
-  TwitterIcon,
-  LinkedInIcon
+  GlobeAltIcon,
+  ChatBubbleLeftRightIcon,
+  UserGroupIcon
 } from '@heroicons/react/24/outline'
 
 const footerLinks = {
@@ -39,9 +39,9 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { name: 'Facebook', href: '#', icon: FacebookIcon },
-  { name: 'Twitter', href: '#', icon: TwitterIcon },
-  { name: 'LinkedIn', href: '#', icon: LinkedInIcon },
+  { name: 'Facebook', href: '#', icon: UserGroupIcon },
+  { name: 'Twitter', href: '#', icon: ChatBubbleLeftRightIcon },
+  { name: 'LinkedIn', href: '#', icon: GlobeAltIcon },
 ]
 
 export default function Footer() {
@@ -69,9 +69,9 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <PhoneIcon className="w-5 h-5 text-primary-400" />
-                <a href="tel:+1-XXX-XXX-XXXX" className="text-secondary-300 hover:text-white transition-colors">
-                  (XXX) XXX-XXXX
-                </a>
+                              <a href="tel:+1-512-635-9847" className="text-secondary-300 hover:text-white transition-colors">
+                (512) 635-9847
+              </a>
               </div>
               <div className="flex items-center space-x-3">
                 <EnvelopeIcon className="w-5 h-5 text-primary-400" />

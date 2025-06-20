@@ -82,12 +82,12 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             {/* Phone number - hidden on mobile */}
             <a
-              href="tel:+1-XXX-XXX-XXXX"
+              href="tel:+1-512-635-9847"
               className="hidden md:flex items-center space-x-2 text-secondary-700 hover:text-primary-600 transition-colors"
               onClick={() => trackEvent('phone_click', { location: 'header' })}
             >
               <PhoneIcon className="w-5 h-5" />
-              <span className="font-semibold">(XXX) XXX-XXXX</span>
+              <span className="font-semibold">(512) 635-9847</span>
             </a>
 
             {/* Get Offer Button */}
@@ -133,12 +133,12 @@ export default function Header() {
 
             {/* Mobile phone number */}
             <a
-              href="tel:+1-XXX-XXX-XXXX"
+              href="tel:+1-512-635-9847"
               className="flex items-center space-x-2 px-4 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium"
               onClick={() => trackEvent('phone_click', { location: 'mobile_menu' })}
             >
               <PhoneIcon className="w-5 h-5" />
-              <span>Call: (XXX) XXX-XXXX</span>
+              <span>Call: (512) 635-9847</span>
             </a>
           </div>
         </div>

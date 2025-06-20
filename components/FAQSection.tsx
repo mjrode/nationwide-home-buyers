@@ -130,11 +130,11 @@ export default function FAQSection() {
               Our friendly team is here to help! Get answers to all your questions and receive your cash offer.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+1-XXX-XXX-XXXX"
+                            <a
+                href="tel:+1-512-635-9847"
                 className="btn bg-white text-primary-700 hover:bg-secondary-50 btn-md shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
-                📞 Call: (XXX) XXX-XXXX
+                📞 Call: (512) 635-9847
               </a>
               <button
                 onClick={() => {

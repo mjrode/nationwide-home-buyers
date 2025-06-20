@@ -342,7 +342,7 @@ const useSchemaMarkup = () => {
       "name": "National Property Buyer",
       "description": "We buy houses in any condition for cash",
       "url": window.location.origin,
-      "telephone": "+1-XXX-XXX-XXXX",
+      "telephone": "+1-512-635-9847",
       "areaServed": "United States",
       "serviceType": "House Buying Service",
       "offers": {

@@ -74,6 +74,10 @@
     .text-balance {
         text-wrap: balance;
     }
+
+    .bg-secondary-25 {
+        background-color: #fafafa;
+    }
 }
 
 @layer utilities {

@@ -10,6 +10,7 @@ import {
   CheckCircleIcon
 } from '@heroicons/react/24/outline'
 import { trackEvent, formatPhoneNumber } from '@/lib/utils'
+import AddressAutocomplete from './AddressAutocomplete'
 
 interface ContactFormData {
   firstName: string
@@ -58,7 +59,7 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm<ContactFormData>()
+  const { register, handleSubmit, formState: { errors }, reset, watch, setValue } = useForm<ContactFormData>()
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
@@ -121,10 +122,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-secondary-900 mb-1">Phone</h4>
                   <a
-                    href="tel:+1-XXX-XXX-XXXX"
+                    href="tel:+1-512-635-9847"
                     className="text-primary-600 hover:text-primary-700 font-medium"
                   >
-                    (XXX) XXX-XXXX
+                    (512) 635-9847
                   </a>
                   <p className="text-sm text-secondary-500">Call for immediate assistance</p>
                 </div>
@@ -272,15 +273,23 @@ export default function ContactSection() {
                       <label htmlFor="address" className="block text-sm font-medium text-secondary-700 mb-2">
                         Property Address *
                       </label>
-                      <input
-                        {...register('address', {
+                                            <AddressAutocomplete
+                        ref={register('address', {
                           required: 'Property address is required',
                           minLength: { value: 10, message: 'Please enter a complete address' }
-                        })}
-                        type="text"
+                        }).ref}
+                        name="address"
+                        value={watch('address') || ''}
+                        onChange={(address) => setValue('address', address)}
+                        onPlaceSelect={(place) => {
+                          trackEvent('address_autocomplete_select', {
+                            address: place.formatted_address,
+                            place_id: place.place_id
+                          })
+                        }}
                         id="address"
                         placeholder="123 Main St, City, State, ZIP"
-                        className="form-input"
+                        required
                       />
                       {errors.address && (
                         <p className="mt-1 text-sm text-red-600">{errors.address.message}</p>
@@ -402,7 +411,7 @@ export default function ContactSection() {
                   </p>
                   <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
                     <p className="text-primary-700 font-medium">
-                      Questions? Call us at <a href="tel:+1-XXX-XXX-XXXX" className="font-bold">(XXX) XXX-XXXX</a>
+                      Questions? Call us at <a href="tel:+1-512-635-9847" className="font-bold">(512) 635-9847</a>
                     </p>
                   </div>
                 </div>

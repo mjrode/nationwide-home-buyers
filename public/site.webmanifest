@@ -1,0 +1,9 @@
+{
+    "name": "Nationwide Home Buyers",
+    "short_name": "Home Buyers",
+    "description": "Get a competitive cash offer for your house in 24 hours or less",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4F46E5"
+}

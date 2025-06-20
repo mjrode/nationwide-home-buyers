@@ -1,6 +1,6 @@
 'use client'
 
-import { MapPinIcon, ClockIcon, HandshakeIcon } from '@heroicons/react/24/outline'
+import { MapPinIcon, ClockIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
 const steps = [
   {
@@ -21,7 +21,7 @@ const steps = [
     id: 3,
     title: 'Get Ready To Close',
     description: 'We\'ll promptly find a local licensed and insured closing company to manage the transaction details for a smooth process.',
-    icon: HandshakeIcon,
+    icon: CheckCircleIcon,
     color: 'from-success-500 to-success-600'
   }
 ]

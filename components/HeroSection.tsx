@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { CheckCircleIcon, ClockIcon, CurrencyDollarIcon, HomeIcon } from '@heroicons/react/24/solid'
 import { trackEvent } from '@/lib/utils'
+import AddressAutocomplete from './AddressAutocomplete'
 
 interface FormData {
   address: string
@@ -22,7 +23,7 @@ export default function HeroSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
+  const { register, handleSubmit, formState: { errors }, reset, watch, setValue } = useForm<FormData>()
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
@@ -129,15 +130,23 @@ export default function HeroSection() {
                       <label htmlFor="address" className="block text-sm font-medium text-secondary-700 mb-2">
                         Property Address *
                       </label>
-                      <input
-                        {...register('address', {
+                                            <AddressAutocomplete
+                        ref={register('address', {
                           required: 'Property address is required',
                           minLength: { value: 10, message: 'Please enter a complete address' }
-                        })}
-                        type="text"
+                        }).ref}
+                        name="address"
+                        value={watch('address') || ''}
+                        onChange={(address) => setValue('address', address)}
+                        onPlaceSelect={(place) => {
+                          trackEvent('address_autocomplete_select', {
+                            address: place.formatted_address,
+                            place_id: place.place_id
+                          })
+                        }}
                         id="address"
                         placeholder="123 Main St, City, State, ZIP"
-                        className="form-input"
+                        required
                       />
                       {errors.address && (
                         <p className="mt-1 text-sm text-red-600">{errors.address.message}</p>
