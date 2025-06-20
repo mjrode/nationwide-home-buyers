@@ -47,20 +47,20 @@ export default function Header() {
         ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-secondary-100'
         : 'bg-transparent'
     )}>
-      <div className="container">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center min-w-0 flex-shrink-0">
             <Link
               href="/"
-              className="flex items-center space-x-2 text-xl font-bold text-primary-700 hover:text-primary-800 transition-colors"
+              className="flex items-center space-x-2 sm:space-x-3 text-base sm:text-lg font-bold text-primary-700 hover:text-primary-800 transition-colors"
               onClick={() => trackEvent('logo_click')}
             >
-              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl shadow-lg">
-                <HomeIcon className="w-6 h-6 text-white" />
+              <div className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg sm:rounded-xl shadow-lg flex-shrink-0">
+                <HomeIcon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </div>
-              <span className="hidden sm:block">Nationwide Home Buyers</span>
-              <span className="sm:hidden">NHB</span>
+              <span className="hidden md:block whitespace-nowrap">Nationwide Home Buyers</span>
+              <span className="md:hidden text-sm sm:text-base font-bold">NHB</span>
             </Link>
           </div>
 
@@ -79,21 +79,21 @@ export default function Header() {
           </nav>
 
           {/* Right side - Phone & CTA */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1 sm:space-x-2 lg:space-x-4 flex-shrink-0">
             {/* Phone number - hidden on mobile */}
             <a
               href="tel:+1-512-635-9847"
-              className="hidden md:flex items-center space-x-2 text-secondary-700 hover:text-primary-600 transition-colors"
+              className="hidden lg:flex items-center space-x-2 text-secondary-700 hover:text-primary-600 transition-colors"
               onClick={() => trackEvent('phone_click', { location: 'header' })}
             >
               <PhoneIcon className="w-5 h-5" />
-              <span className="font-semibold">(512) 635-9847</span>
+              <span className="font-semibold whitespace-nowrap">(512) 635-9847</span>
             </a>
 
             {/* Get Offer Button */}
             <button
               onClick={handleGetOfferClick}
-              className="btn btn-primary btn-sm lg:btn-md shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              className="px-2.5 py-1.5 sm:px-4 sm:py-2 lg:px-6 lg:py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-md sm:rounded-lg lg:rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-xs sm:text-sm lg:text-base whitespace-nowrap"
             >
               <span className="hidden sm:inline">Get Cash Offer</span>
               <span className="sm:hidden">Get Offer</span>
@@ -102,14 +102,14 @@ export default function Header() {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden p-2 text-secondary-700 hover:text-primary-600 transition-colors"
+              className="lg:hidden p-1 sm:p-1.5 text-secondary-700 hover:text-primary-600 transition-colors flex-shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (
-                <XMarkIcon className="w-6 h-6" />
+                <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
               ) : (
-                <Bars3Icon className="w-6 h-6" />
+                <Bars3Icon className="w-5 h-5 sm:w-6 sm:h-6" />
               )}
             </button>
           </div>
@@ -117,15 +117,15 @@ export default function Header() {
 
         {/* Mobile Navigation Menu */}
         <div className={cn(
-          'lg:hidden overflow-hidden transition-all duration-300 border-t border-secondary-100',
-          mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          'lg:hidden overflow-hidden transition-all duration-300',
+          mobileMenuOpen ? 'max-h-96 opacity-100 border-t border-secondary-100' : 'max-h-0 opacity-0'
         )}>
-          <div className="py-4 space-y-2 bg-white/95 backdrop-blur-md">
+          <div className="py-2 px-1 space-y-0.5 bg-white/95 backdrop-blur-md">
             {navigation.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="block w-full text-left px-4 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium"
+                className="block w-full text-left px-3 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium text-sm"
               >
                 {item.name}
               </button>
@@ -134,10 +134,10 @@ export default function Header() {
             {/* Mobile phone number */}
             <a
               href="tel:+1-512-635-9847"
-              className="flex items-center space-x-2 px-4 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium"
+              className="flex items-center space-x-2 px-3 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium text-sm"
               onClick={() => trackEvent('phone_click', { location: 'mobile_menu' })}
             >
-              <PhoneIcon className="w-5 h-5" />
+              <PhoneIcon className="w-4 h-4" />
               <span>Call: (512) 635-9847</span>
             </a>
           </div>
