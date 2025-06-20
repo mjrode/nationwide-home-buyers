@@ -155,36 +155,39 @@ export default function BenefitsSection() {
 
                 <div className="space-y-3">
                   {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="bg-white rounded-xl p-4 shadow-soft hover:shadow-lg transition-all duration-300 border border-secondary-100">
-                      <div className="flex items-center justify-between">
-                        <span className="text-secondary-900 font-medium flex-1 pr-4">
+                    <div key={itemIndex} className="bg-white rounded-xl p-5 shadow-soft hover:shadow-lg transition-all duration-300 border border-secondary-100">
+                      <div className="space-y-4">
+                        <div className="text-secondary-900 font-medium text-sm leading-relaxed">
                           {item.label}
-                        </span>
-                        <div className="flex items-center space-x-4">
+                        </div>
+
+                        <div className="flex items-center justify-around pt-3 border-t border-secondary-100">
                           {/* Traditional column */}
-                          <div className="text-center">
-                            <div className="text-xs text-secondary-500 mb-1">Traditional</div>
-                            <div className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
+                          <div className="text-center flex-1">
+                            <div className="text-xs text-secondary-500 mb-2 font-medium">Traditional</div>
+                            <div className={`inline-flex items-center justify-center w-8 h-8 rounded-full mx-auto ${
                               item.traditional
                                 ? 'bg-red-100'
                                 : 'bg-gray-100'
                             }`}>
-                              <XMarkIcon className={`w-4 h-4 ${
+                              <XMarkIcon className={`w-5 h-5 ${
                                 item.traditional ? 'text-red-600' : 'text-gray-400'
                               }`} />
                             </div>
                           </div>
 
+                          <div className="w-px h-8 bg-secondary-200 mx-4" />
+
                           {/* Us column */}
-                          <div className="text-center">
-                            <div className="text-xs text-secondary-500 mb-1">Us</div>
-                            <div className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
+                          <div className="text-center flex-1">
+                            <div className="text-xs text-secondary-500 mb-2 font-medium">Our Way</div>
+                            <div className={`inline-flex items-center justify-center w-8 h-8 rounded-full mx-auto ${
                               item.us ? 'bg-green-100' : 'bg-gray-100'
                             }`}>
                               {item.us ? (
-                                <CheckIcon className="w-4 h-4 text-green-600" />
+                                <CheckIcon className="w-5 h-5 text-green-600" />
                               ) : (
-                                <XMarkIcon className="w-4 h-4 text-gray-400" />
+                                <XMarkIcon className="w-5 h-5 text-gray-400" />
                               )}
                             </div>
                           </div>
@@ -214,7 +217,7 @@ export default function BenefitsSection() {
         </div>
 
         {/* Enhanced Bottom CTA */}
-        <div className="text-center animate-slide-up animation-delay-800">
+        <div className="text-center mt-20 mb-16">
           <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl p-8 md:p-12 text-white shadow-strong relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 opacity-10">
@@ -223,14 +226,14 @@ export default function BenefitsSection() {
             </div>
 
             <div className="relative">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              <h3 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Experience the Difference?
               </h3>
               <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of satisfied homeowners who chose the fast, easy, and stress-free way to sell their house.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <button
                   onClick={handleCTAClick}
                   className="btn bg-white text-primary-700 hover:bg-secondary-50 btn-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 group relative overflow-hidden"

@@ -129,13 +129,13 @@ export default function HeroSection() {
             </p>
 
             {/* Enhanced Benefits Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8 animate-slide-up animation-delay-400">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="group flex items-center space-x-3 text-secondary-700 hover:text-primary-700 transition-colors duration-200 cursor-default">
+                <div key={index} className="group flex items-center space-x-3 text-secondary-700 hover:text-primary-700 transition-colors duration-200 cursor-default p-3 rounded-xl hover:bg-primary-50">
                   <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg">
                     <benefit.icon className="w-4 h-4 text-white" />
                   </div>
-                  <span className="font-medium text-sm md:text-base">{benefit.text}</span>
+                  <span className="font-medium text-sm md:text-base leading-tight">{benefit.text}</span>
                 </div>
               ))}
             </div>

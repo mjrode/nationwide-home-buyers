@@ -116,32 +116,31 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className={cn(
-          'lg:hidden overflow-hidden transition-all duration-300',
-          mobileMenuOpen ? 'max-h-96 opacity-100 border-t border-secondary-100' : 'max-h-0 opacity-0'
-        )}>
-          <div className="py-2 px-1 space-y-0.5 bg-white/95 backdrop-blur-md">
-            {navigation.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => handleNavClick(item.href)}
-                className="block w-full text-left px-3 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium text-sm"
-              >
-                {item.name}
-              </button>
-            ))}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t border-secondary-100 bg-white/95 backdrop-blur-md">
+            <div className="py-2 px-1 space-y-0.5">
+              {navigation.map((item) => (
+                <button
+                  key={item.name}
+                  onClick={() => handleNavClick(item.href)}
+                  className="block w-full text-left px-3 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium text-sm"
+                >
+                  {item.name}
+                </button>
+              ))}
 
-            {/* Mobile phone number */}
-            <a
-              href="tel:+1-512-635-9847"
-              className="flex items-center space-x-2 px-3 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium text-sm"
-              onClick={() => trackEvent('phone_click', { location: 'mobile_menu' })}
-            >
-              <PhoneIcon className="w-4 h-4" />
-              <span>Call: (512) 635-9847</span>
-            </a>
+              {/* Mobile phone number */}
+              <a
+                href="tel:+1-512-635-9847"
+                className="flex items-center space-x-2 px-3 py-3 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 rounded-lg font-medium text-sm"
+                onClick={() => trackEvent('phone_click', { location: 'mobile_menu' })}
+              >
+                <PhoneIcon className="w-4 h-4" />
+                <span>Call: (512) 635-9847</span>
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </header>
   )
