@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { CheckCircleIcon, ClockIcon, CurrencyDollarIcon, HomeIcon } from '@heroicons/react/24/solid'
 import { trackEvent } from '@/lib/utils'
 import AddressAutocomplete from './AddressAutocomplete'
+import Image from 'next/image'
 
 interface FormData {
   address: string
@@ -88,25 +89,44 @@ export default function HeroSection() {
               ))}
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mb-8 lg:mb-0 animate-slide-up animation-delay-600">
-              <div className="flex items-center space-x-2">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-8 h-8 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold">
-                      {i}
-                    </div>
-                  ))}
+            {/* Personal Introduction with Trust Indicators */}
+            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-8 lg:mb-0 animate-slide-up animation-delay-600 border border-primary-100">
+              <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                {/* Profile Photo */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-primary-200 ring-offset-2">
+                    <Image
+                      src="/images/profile.jpg"
+                      alt="Phillip Brown - Nationwide Home Buyers Owner"
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-success-500 rounded-full border-2 border-white flex items-center justify-center">
+                    <CheckCircleIcon className="w-3 h-3 text-white" />
+                  </div>
                 </div>
-                <div className="text-sm">
-                  <div className="font-semibold text-secondary-900">5,000+ Happy Sellers</div>
-                  <div className="text-secondary-600">Since 2010</div>
-                </div>
-              </div>
 
-              <div className="text-sm">
-                <div className="font-semibold text-secondary-900">A+ BBB Rating</div>
-                <div className="text-secondary-600">Fully Licensed & Insured</div>
+                {/* Personal Message */}
+                <div className="flex-1 text-center sm:text-left">
+                  <p className="text-secondary-800 font-medium mb-2">
+                    "I've been helping homeowners sell their houses quickly and fairly for over 10 years.
+                    Every offer is backed by my personal guarantee."
+                  </p>
+                  <div className="flex items-center justify-center sm:justify-start space-x-4">
+                    <div>
+                      <p className="font-semibold text-secondary-900">Phillip Brown</p>
+                      <p className="text-sm text-secondary-600">Founder & CEO</p>
+                    </div>
+                    <div className="h-8 w-px bg-secondary-300"></div>
+                    <div className="text-sm">
+                      <div className="font-semibold text-secondary-900">5,000+ Happy Sellers</div>
+                      <div className="text-secondary-600">A+ BBB Rating</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -130,7 +150,7 @@ export default function HeroSection() {
                       <label htmlFor="address" className="block text-sm font-medium text-secondary-700 mb-2">
                         Property Address *
                       </label>
-                                            <AddressAutocomplete
+                      <AddressAutocomplete
                         ref={register('address', {
                           required: 'Property address is required',
                           minLength: { value: 10, message: 'Please enter a complete address' }
@@ -205,9 +225,20 @@ export default function HeroSection() {
                   <p className="text-secondary-600 mb-4">
                     We've received your information and will prepare your cash offer within 24 hours.
                   </p>
-                  <p className="text-sm text-secondary-500">
-                    Our team will contact you shortly with your personalized offer.
-                  </p>
+                  <div className="flex items-center justify-center space-x-3 mb-4">
+                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                      <Image
+                        src="/images/profile.jpg"
+                        alt="Phillip Brown"
+                        width={40}
+                        height={40}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <p className="text-primary-700 font-medium">
+                      Questions? Call us at <a href="tel:+1-512-635-9847" className="font-bold">(512) 635-9847</a>
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
