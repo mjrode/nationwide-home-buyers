@@ -78,8 +78,15 @@ const AddressAutocomplete = forwardRef<HTMLInputElement, AddressAutocompleteProp
   useEffect(() => {
     return () => {
       if (autocompleteRef.current) {
-        google.maps.event.clearInstanceListeners(autocompleteRef.current)
-        autocompleteRef.current = null
+        try {
+          // Only clear listeners if Google Maps is available
+          if (typeof window !== 'undefined' && (window as any).google?.maps?.event) {
+            (window as any).google.maps.event.clearInstanceListeners(autocompleteRef.current)
+          }
+          autocompleteRef.current = null
+        } catch (error) {
+          // Ignore cleanup errors - Google Maps might not be loaded
+        }
       }
     }
   }, [])
@@ -95,11 +102,13 @@ const AddressAutocomplete = forwardRef<HTMLInputElement, AddressAutocompleteProp
     <div className="relative">
       <input
         ref={(node) => {
-          inputRef.current = node
+          // Assign to internal ref
+          ;(inputRef as any).current = node
+          // Forward to external ref
           if (typeof ref === 'function') {
             ref(node)
           } else if (ref) {
-            ref.current = node
+            ;(ref as any).current = node
           }
         }}
         type="text"
